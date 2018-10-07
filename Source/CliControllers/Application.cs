@@ -36,7 +36,7 @@ namespace CliControllers
             catch(Exception ex)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine(ex.Message);
+                Console.WriteLine(GetInnerException(ex).Message);
                 Console.ResetColor();
             }
         }
@@ -51,6 +51,12 @@ namespace CliControllers
                     throw new InvalidOperationException($"The name or alias '{item}' is specified more than once.");
                 }
             }
+        }
+
+        private static Exception GetInnerException(Exception ex)
+        {
+            if (ex.InnerException == null) return ex;
+            else return GetInnerException(ex.InnerException);
         }
 
         public static Controller FindController(string commandName)
