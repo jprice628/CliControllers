@@ -2,6 +2,18 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <Version>0.0.1</Version>
+    <Authors>jprice628</Authors>
+    <Company />
+    <Description>A framwork for developing CLI applications using an easy decorated controller pattern.</Description>
+    <Copyright>Copyright (c) 2018 jprice628</Copyright>
+    <PackageLicenseUrl>https://github.com/jprice628/CliControllers/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/jprice628/CliControllers</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/jprice628/CliControllers</RepositoryUrl>
+    <RepositoryType>Git</RepositoryType>
+    <PackageReleaseNotes />
+    <NeutralLanguage>en-US</NeutralLanguage>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
   </PropertyGroup>
 
 </Project>
