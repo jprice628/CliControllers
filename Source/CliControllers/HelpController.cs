@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace CliControllers
 {
+    [Description("Lists commands or displays specific information about a command.")]
     [Alias("/? ?")]
     public class HelpController
     {
