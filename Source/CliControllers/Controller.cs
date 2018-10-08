@@ -190,9 +190,14 @@ namespace CliControllers
             var parms = MatchArgumentsToParameters(command)
                 .Concat(MatchOptionsToParameters(command))
                 .ToArray();
+            var controller = Activator.CreateInstance(ControllerType);
             ControllerType
                 .GetMethod("Invoke")
-                .Invoke(Activator.CreateInstance(ControllerType), parms.ToArray());
+                .Invoke(controller, parms.ToArray());
+            if (controller is IDisposable)
+            {
+                ((IDisposable)controller).Dispose();
+            }
         }
 
         private IList<object> MatchArgumentsToParameters(Command command)
