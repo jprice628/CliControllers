@@ -345,5 +345,38 @@ namespace UnitTests
                 Opt4 = opt4;
             }
         }
+
+        [TestMethod]
+        public void Controller_Invoke_DisposesController()
+        {
+            // Arrange
+            var args = new[] { "disposable" };
+            var command = Command.Parse(args);
+            var controller = Controller.Create(typeof(DisposableController));
+
+            // Act
+            controller.Invoke(command);
+
+            // Assert
+            Assert.IsTrue(DisposableController.Invoked);
+            Assert.IsTrue(DisposableController.Disposed);
+        }
+
+        class DisposableController : IDisposable
+        {
+            public static bool Invoked { get; private set; }
+
+            public static bool Disposed { get; private set; }
+
+            public void Invoke()
+            {
+                Invoked = true;
+            }
+
+            public void Dispose()
+            {
+                Disposed = true;
+            }
+        }
     }
 }
